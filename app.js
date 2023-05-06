@@ -16,6 +16,8 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const port = process.env.port || 3000;
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -232,7 +234,7 @@ async function main() {
     });
 
 
-    app.listen(3000, function (req, res) {
-        console.log("Server is running on port 3000");
+    app.listen(port, function (req, res) {
+        console.log(`app is running ${port}`);
     })
 }
