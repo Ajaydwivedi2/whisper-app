@@ -235,6 +235,6 @@ async function main() {
 
 
     app.listen(port, function (req, res) {
-        console.log(`app is running ${port}`);
+        console.log(`server is running on port ${port}`);
     })
 }
