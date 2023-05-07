@@ -54,7 +54,7 @@ Project is complete
 https://whisper-f07c.onrender.com
 
 ## Contact
-Created by [@ajaydwivedi](www.linkedin.com/in/ajaydwivedi2) - feel free to contact me!
+Created by [@ajaydwivedi](https://github.com/Ajaydwivedi2) - feel free to contact me!
 
 
 
