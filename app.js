@@ -46,8 +46,11 @@ async function main() {
 
     });
 
+    userSchema.plugin(passportLocalMongoose, {
+        IncorrectPasswordError: 'Password or username are incorrect',
+        IncorrectUsernameError: 'Password or username are incorrect'
+    });
 
-    userSchema.plugin(passportLocalMongoose);
     userSchema.plugin(findOrCreate);
 
     const User = mongoose.model('User', userSchema);
@@ -203,35 +206,11 @@ async function main() {
 
     });
 
-    app.post('/login', function (req, res) {
-
-        const user = new User({
-            username: req.body.username,
-            password: req.body.password
-        });
-
-        req.logIn(user, function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-
-                User.findOne({ username: req.body.username }).then(function (foundUser) {
-                    if (foundUser) {
-                        passport.authenticate("local")(req, res, function () {
-                            res.redirect("/secrets");
-                        });
-                    } else {
-
-                        res.render('login', { errMsg: "Please provide a valid username and password.", username: req.body.username, password: req.body.password });
-
-                    }
-                }).catch(function (err) {
-                    console.log(err);
-                })
-
-            }
-        })
-    });
+    app.post("/login", passport.authenticate("local", {
+        successRedirect: "/secrets",
+        failureRedirect: "/login",
+    })
+    );
 
 
     app.listen(port, function (req, res) {
