@@ -11,7 +11,6 @@
 * [Project Status](#project-status)
 * [Contact](#contact)
 
-
 ## General Information
 - The website let the user submit their blogs
 - The aim of this project was to learn how to implement template engine in a web
